@@ -88,6 +88,13 @@ class WiziSignClient
         return $this->idAdvProc;
     }
 
+     /**
+     * @param $idAdvProc
+     */
+    public function setIdprocedure($idAdvProc){
+        $this->idAdvProc = $idAdvProc;
+    }
+    
     /**
      * permet de recup le fichier signé sur yousign
      * @param $fileid
