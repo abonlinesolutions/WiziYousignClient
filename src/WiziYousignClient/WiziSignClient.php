@@ -82,6 +82,13 @@ class WiziSignClient
     }
 
     /**
+     * @return mixed
+     */
+    public function getIdprocedure(){
+        return $this->idAdvProc;
+    }
+
+    /**
      * permet de recup le fichier signé sur yousign
      * @param $fileid
      * @param $mode
@@ -142,7 +149,11 @@ class WiziSignClient
             curl_setopt($ch, CURLOPT_POST, 1); // Specify the request method as POST
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post); // Set the posted fields
         }
-
+        
+        if ($method == 'DELETE') {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        }
+        
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // This will follow any redirects
         $result = curl_exec($ch); // Execute the cURL statement
         $err = curl_error($ch);
